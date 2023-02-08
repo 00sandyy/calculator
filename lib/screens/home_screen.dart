@@ -1,6 +1,6 @@
+import 'package:calci/widgets/calc_input.dart';
+import 'package:calci/widgets/calc_keyboard_layout.dart';
 import 'package:flutter/material.dart';
-
-import '../bottons/button1.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,30 +10,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool isBottonPressed = false;
-  void bottonPressed() {
-    setState(() {
-      if (isBottonPressed == false) {
-        isBottonPressed = true;
-      } else if (isBottonPressed == true) {
-        isBottonPressed = false;
-      }
-    });
-  }
+  final TextEditingController _calcController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      body: Center(
-        child: NeuBotton(
-          onTap: bottonPressed,
-          isBottonPressed: isBottonPressed,
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CalcInput(
+            controller: _calcController,
+          ),
+          const SizedBox(
+            height: 500.0,
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
+              child: CalcKeyboardLayout(),
+            ),
+          ),
+        ],
       ),
-      //     body: Center(
-      //     child: CLickButton(),
-      //  ),
     );
   }
 }

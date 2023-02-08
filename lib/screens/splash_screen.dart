@@ -13,7 +13,6 @@ class _SplashScreenState extends State<SplashScreen> {
   SplashServices splashScreen = SplashServices();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     splashScreen.splash(context);
   }
@@ -23,7 +22,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Lottie.network(
-            'https://assets1.lottiefiles.com/private_files/lf30_zvsbj5pd.json'),
+          'https://assets1.lottiefiles.com/private_files/lf30_zvsbj5pd.json',
+        ),
       ),
     );
   }
