@@ -1,4 +1,6 @@
+import 'package:calci/screens/home_screen.dart';
 import 'package:calci/widgets/calc_button.dart';
+import 'package:calci/widgets/calc_input.dart';
 import 'package:flutter/material.dart';
 
 class CalcKeyboardLayout extends StatelessWidget {
@@ -6,16 +8,59 @@ class CalcKeyboardLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> buttonText = [
+      'C',
+      '%',
+      'AC',
+      '/',
+      '7',
+      '8',
+      '9',
+      '*',
+      '4',
+      '5',
+      '6',
+      '-',
+      '1',
+      '2',
+      '3',
+      '+',
+      '00',
+      '0',
+      '.',
+      '='
+    ];
     return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+        crossAxisCount: 4,
         mainAxisSpacing: 5.0,
         crossAxisSpacing: 5.0,
       ),
-      itemCount: 9,
+      itemCount: buttonText.length,
       itemBuilder: (context, index) {
-        return CalcButton(onTap: () {});
+        return CalcButton(
+          fontSize: fontSize(buttonText[index]) ? 25 : 20,
+          onTap: () {},
+          bottonText: buttonText[index],
+        );
       },
     );
+  }
+
+  bool fontSize(String x) {
+    if (x == 'C' ||
+        x == '%' ||
+        x == 'AC' ||
+        x == '/' ||
+        x == '*' ||
+        x == '+' ||
+        x == '-' ||
+        x == '+' ||
+        x == '=' ||
+        x == '.') {
+      return true;
+    }
+    return false;
   }
 }

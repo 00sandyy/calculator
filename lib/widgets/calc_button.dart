@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 class CalcButton extends StatefulWidget {
   final Function() onTap;
-  const CalcButton({
-    super.key,
-    required this.onTap,
-  });
+  const CalcButton(
+      {super.key,
+      required this.onTap,
+      required this.bottonText,
+      required this.fontSize});
+  final String? bottonText;
+  final double fontSize;
 
   @override
   State<CalcButton> createState() => _CalcButtonState();
@@ -24,7 +27,7 @@ class _CalcButtonState extends State<CalcButton> {
             isButtonPressed = true;
           });
           Future.delayed(
-            const Duration(milliseconds: 200),
+            const Duration(milliseconds: 180),
             () {
               setState(() {
                 isButtonPressed = false;
@@ -34,8 +37,8 @@ class _CalcButtonState extends State<CalcButton> {
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          height: 160,
-          width: 160,
+          height: 20,
+          width: 20,
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: BorderRadius.circular(12),
@@ -64,11 +67,14 @@ class _CalcButtonState extends State<CalcButton> {
                     ),
                   ],
           ),
-          child: Icon(
-            Icons.favorite,
-            size: 60,
-            color: isButtonPressed ? Colors.red[200] : Colors.red[400],
-          ),
+          child: Center(
+              child: Text(
+            "${widget.bottonText}",
+            style: TextStyle(
+                fontSize: widget.fontSize,
+                fontWeight: FontWeight.bold,
+                color: Colors.grey[500]),
+          )),
         ),
       ),
     );

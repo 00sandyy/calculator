@@ -16,20 +16,37 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CalcInput(
-            controller: _calcController,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [Colors.grey.shade300, Colors.white],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: SafeArea(
+                  child: Container(
+                    child: CalcInput(
+                      controller: _calcController,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  child: CalcKeyboardLayout(),
+                ),
+              )
+            ],
           ),
-          const SizedBox(
-            height: 500.0,
-            child: Padding(
-              padding: EdgeInsets.all(10.0),
-              child: CalcKeyboardLayout(),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
