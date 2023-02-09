@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Lottie.network(
-          'https://assets1.lottiefiles.com/private_files/lf30_zvsbj5pd.json',
+          'https://assets7.lottiefiles.com/packages/lf20_s0sklx3e.json',
         ),
       ),
     );
