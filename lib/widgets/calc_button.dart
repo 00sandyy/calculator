@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/calc_provider.dart';
 
 class CalcButton extends StatefulWidget {
   final Function() onTap;
-  const CalcButton(
-      {super.key,
-      required this.onTap,
-      required this.bottonText,
-      required this.fontSize});
-  final String? bottonText;
+  const CalcButton({
+    super.key,
+    required this.onTap,
+    required this.bottonText,
+    required this.fontSize,
+  });
+  final String bottonText;
   final double fontSize;
 
   @override
@@ -18,11 +22,13 @@ class _CalcButtonState extends State<CalcButton> {
   bool isButtonPressed = false;
   @override
   Widget build(BuildContext context) {
+    final calcProvider = Provider.of<CalcProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: GestureDetector(
         onTap: () {
-          widget.onTap();
+          calcProvider.onPressedButton(widget.bottonText);
           setState(() {
             isButtonPressed = true;
           });
