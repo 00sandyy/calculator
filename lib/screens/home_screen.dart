@@ -1,3 +1,4 @@
+import 'package:calci/screens/history_list.dart';
 import 'package:calci/widgets/calc_input.dart';
 import 'package:calci/widgets/calc_keyboard_layout.dart';
 import 'package:flutter/material.dart';
@@ -29,17 +30,24 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Expanded(
-                child: SafeArea(
-                  child: Container(
-                    child: CalcInput(
-                      controller: _calcController,
-                    ),
-                  ),
+              SafeArea(
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return HistoryList();
+                    }));
+                  },
+                  icon: Icon(Icons.history),
                 ),
               ),
               Expanded(
-                flex: 2,
+                child: CalcInput(
+                  controller: _calcController,
+                ),
+              ),
+              Expanded(
+                flex: 3,
                 child: Container(
                   child: CalcKeyboardLayout(),
                 ),
