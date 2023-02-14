@@ -21,9 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Lottie.network(
-          'https://assets7.lottiefiles.com/packages/lf20_s0sklx3e.json',
-        ),
+        child: Lottie.asset('assets/calc.json'),
       ),
     );
   }

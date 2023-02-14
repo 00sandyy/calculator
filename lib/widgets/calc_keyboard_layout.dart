@@ -1,6 +1,4 @@
-import 'package:calci/screens/home_screen.dart';
 import 'package:calci/widgets/calc_button.dart';
-import 'package:calci/widgets/calc_input.dart';
 import 'package:flutter/material.dart';
 
 class CalcKeyboardLayout extends StatelessWidget {

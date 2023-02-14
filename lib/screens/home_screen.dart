@@ -33,12 +33,16 @@ class _HomeScreenState extends State<HomeScreen> {
               SafeArea(
                 child: IconButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return HistoryList();
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const HistoryList();
+                        },
+                      ),
+                    );
                   },
-                  icon: Icon(Icons.history),
+                  icon: const Icon(Icons.history),
                 ),
               ),
               Expanded(
