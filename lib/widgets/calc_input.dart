@@ -22,18 +22,24 @@ class CalcInput extends StatelessWidget {
             controller: calcProvider.calcController,
             style: TextStyle(color: Colors.grey[600], fontSize: 20),
             enabled: false,
+            textDirection: TextDirection.rtl,
             decoration: const InputDecoration(
-              border: OutlineInputBorder(),
+              border: InputBorder.none,
+              hintText: '0.0',
+              hintTextDirection: TextDirection.rtl,
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.only(right: 20.0),
-          child: Text(
-            calcProvider.result.toString(),
-            style: TextStyle(fontSize: 20, color: Colors.grey[500]),
+        if (calcProvider.result != null && calcProvider.result != 0.0)
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Text(
+              calcProvider.result == null
+                  ? 0.0.toString()
+                  : calcProvider.result.toString(),
+              style: TextStyle(fontSize: 20, color: Colors.grey[500]),
+            ),
           ),
-        ),
       ],
     );
   }

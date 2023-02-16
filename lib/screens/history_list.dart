@@ -14,6 +14,7 @@ class _HistoryListState extends State<HistoryList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.grey,
         title: const Text(
           'History',
           style: TextStyle(

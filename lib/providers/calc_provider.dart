@@ -37,10 +37,17 @@ class CalcProvider extends ChangeNotifier {
     double num2 = double.parse(elements[2].trim());
     String op = elements[1].trim();
 */
-    double num1 = double.parse(inputData.split(RegExp(r'[+,-,*,/]'))[0]);
 
-    double num2 = double.parse(inputData.split(RegExp(r'[+,-,*,/]'))[1]);
-    String op = inputData.split(RegExp(r'[0-9]'))[1];
+    final splitted = inputData.split(RegExp(r'[-,+,/,*,%]'));
+
+    final num1 = double.parse(splitted.first);
+    final num2 = double.parse(splitted.last);
+
+    final op = inputData
+        .split(RegExp(r'[0-9]'))
+        .where((e) => e.isNotEmpty)
+        .toList()
+        .first;
 
     switch (op) {
       case '+':
@@ -55,9 +62,9 @@ class CalcProvider extends ChangeNotifier {
       case '/':
         result = num1 / num2;
         break;
-      //   case '%' :
-      // result = (num1*num2)/100;
-      //break;
+      case '%':
+        result = (num1 * num2) / 100;
+        break;
 
       default:
         result = 0;
