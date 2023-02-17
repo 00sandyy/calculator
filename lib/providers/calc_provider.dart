@@ -28,16 +28,6 @@ class CalcProvider extends ChangeNotifier {
 
   void showResult(final String buttonText) {
     inputData = _calcController.text;
-    /* int num1 = int.parse(inputData.split(RegExp(r'[+,-,*,/]'))[0]);
-
-    String op = inputData.split(RegExp(r'[0-9]'))[1];
-    int num2 = int.parse(inputData.split(RegExp(r'[+,-,*,/]'))[1]);
-      List<String> elements = inputData.split(new RegExp(r"([+,-,*,/])"));
-    double num1 = double.parse(elements[0].trim());
-    double num2 = double.parse(elements[2].trim());
-    String op = elements[1].trim();
-*/
-
     final splitted = inputData.split(RegExp(r'[-,+,/,*,%]'));
 
     final num1 = double.parse(splitted.first);
