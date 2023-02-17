@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:calci/providers/calc_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -16,12 +17,23 @@ class _HistoryListState extends State<HistoryList> {
     return Scaffold(
       appBar: AppBar(
         foregroundColor: Colors.grey,
-        title: const Text(
-          'History',
-          style: TextStyle(
-            color: Colors.grey,
-            fontWeight: FontWeight.bold,
-          ),
+        title: AnimatedTextKit(
+          animatedTexts: [
+            TyperAnimatedText(
+              'History',
+              speed: Duration(
+                milliseconds: 200,
+              ),
+              textStyle: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+          isRepeatingAnimation: false,
+          repeatForever: false,
+          displayFullTextOnTap: true,
+          stopPauseOnTap: false,
         ),
         backgroundColor: Colors.grey[300],
         centerTitle: true,
@@ -31,10 +43,12 @@ class _HistoryListState extends State<HistoryList> {
             builder: (context, value, child) {
               return IconButton(
                 onPressed: () {
-                  setState(() {
-                    value.inputDatas.length = 0;
-                    value.resultDatas.length = 0;
-                  });
+                  setState(
+                    () {
+                      value.inputDatas.length = 0;
+                      value.resultDatas.length = 0;
+                    },
+                  );
                 },
                 icon: const Icon(
                   Icons.delete,
