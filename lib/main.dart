@@ -13,8 +13,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarcolor.setStatusBarColor(Colors.grey.shade300);
-    FlutterStatusbarcolor.setNavigationBarColor(Colors.white);
     return ChangeNotifierProvider<CalcProvider>(
       create: (context) {
         return CalcProvider();

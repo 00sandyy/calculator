@@ -5,14 +5,17 @@ import 'package:flutter/material.dart';
 
 class SplashServices {
   void splash(BuildContext context) {
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pop(context);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        ),
-      );
-    });
+    Timer(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
+          ),
+        );
+      },
+    );
   }
 }

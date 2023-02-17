@@ -2,6 +2,7 @@ import 'package:calci/screens/history_list.dart';
 import 'package:calci/widgets/calc_input.dart';
 import 'package:calci/widgets/calc_keyboard_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,6 +16,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Colors.grey.shade300);
+    FlutterStatusbarcolor.setNavigationBarColor(Colors.white);
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       body: Container(

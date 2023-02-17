@@ -1,5 +1,6 @@
 import 'package:calci/services/splash_services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,6 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterStatusbarcolor.setStatusBarColor(Theme.of(context).canvasColor);
+    FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
     return Scaffold(
       body: Center(
         child: Lottie.asset('assets/calc.json'),

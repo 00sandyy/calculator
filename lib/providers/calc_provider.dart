@@ -45,7 +45,7 @@ class CalcProvider extends ChangeNotifier {
 
     final op = inputData
         .split(RegExp(r'[0-9]'))
-        .where((e) => e.isNotEmpty)
+        .where((e) => e.isNotEmpty && !e.contains('.'))
         .toList()
         .first;
 

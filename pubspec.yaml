@@ -37,6 +37,7 @@ dependencies:
   lottie: ^2.2.0
   provider: ^6.0.5
   flutter_statusbarcolor_ns: ^0.5.0
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   flutter_test:

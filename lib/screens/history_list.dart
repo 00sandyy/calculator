@@ -1,5 +1,6 @@
 import 'package:calci/providers/calc_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
 
 class HistoryList extends StatefulWidget {
@@ -46,34 +47,62 @@ class _HistoryListState extends State<HistoryList> {
       ),
       body: Consumer<CalcProvider>(
         builder: (context, value, child) {
-          return ListView.builder(
-            itemCount: value.inputDatas.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(
-                  value.inputDatas[index] + ' =',
-                  style: TextStyle(fontSize: 23, color: Colors.grey[500]),
-                ),
-                subtitle: Text(
-                  value.resultDatas[index],
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.grey[400],
+          return AnimationLimiter(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: value.inputDatas.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    left: 10,
+                    right: 10.0,
+                    top: index == 0 ? 10.0 : 0.0,
                   ),
-                ),
-                trailing: IconButton(
-                  onPressed: () {
-                    setState(
-                      () {
-                        value.inputDatas.removeAt(index);
-                        value.resultDatas.removeAt(index);
-                      },
-                    );
-                  },
-                  icon: const Icon(Icons.close),
-                ),
-              );
-            },
+                  child: AnimationConfiguration.staggeredList(
+                    position: index,
+                    delay: const Duration(milliseconds: 100),
+                    child: SlideAnimation(
+                      curve: Curves.fastLinearToSlowEaseIn,
+                      horizontalOffset: 30,
+                      verticalOffset: 300,
+                      duration: const Duration(milliseconds: 2000),
+                      child: FlipAnimation(
+                        duration: const Duration(milliseconds: 2000),
+                        curve: Curves.fastLinearToSlowEaseIn,
+                        flipAxis: FlipAxis.y,
+                        child: Card(
+                          child: ListTile(
+                            title: Text(
+                              value.inputDatas[index] + ' =',
+                              style: TextStyle(
+                                  fontSize: 23, color: Colors.grey[500]),
+                            ),
+                            subtitle: Text(
+                              value.resultDatas[index],
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.grey[400],
+                              ),
+                            ),
+                            trailing: IconButton(
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    value.inputDatas.removeAt(index);
+                                    value.resultDatas.removeAt(index);
+                                  },
+                                );
+                              },
+                              icon: const Icon(Icons.close),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
           );
         },
       ),
