@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:calci/providers/calc_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
 
@@ -84,30 +85,50 @@ class _HistoryListState extends State<HistoryList> {
                         duration: const Duration(milliseconds: 2000),
                         curve: Curves.fastLinearToSlowEaseIn,
                         flipAxis: FlipAxis.y,
-                        child: Card(
-                          child: ListTile(
-                            title: Text(
-                              value.inputDatas[index] + ' =',
-                              style: TextStyle(
-                                  fontSize: 23, color: Colors.grey[500]),
-                            ),
-                            subtitle: Text(
-                              value.resultDatas[index],
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.grey[400],
+                        child: Slidable(
+                          endActionPane: ActionPane(
+                            motion: const BehindMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) {
+                                  setState(
+                                    () {
+                                      value.inputDatas.removeAt(index);
+                                      value.resultDatas.removeAt(index);
+                                    },
+                                  );
+                                },
+                                backgroundColor: Colors.grey,
+                                icon: Icons.delete,
+                                label: 'Remove',
                               ),
-                            ),
-                            trailing: IconButton(
-                              onPressed: () {
-                                setState(
-                                  () {
-                                    value.inputDatas.removeAt(index);
-                                    value.resultDatas.removeAt(index);
-                                  },
-                                );
-                              },
-                              icon: const Icon(Icons.close),
+                            ],
+                          ),
+                          child: Card(
+                            child: ListTile(
+                              title: Text(
+                                value.inputDatas[index] + ' =',
+                                style: TextStyle(
+                                    fontSize: 23, color: Colors.grey[500]),
+                              ),
+                              subtitle: Text(
+                                value.resultDatas[index],
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.grey[400],
+                                ),
+                              ),
+                              trailing: IconButton(
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      value.inputDatas.removeAt(index);
+                                      value.resultDatas.removeAt(index);
+                                    },
+                                  );
+                                },
+                                icon: const Icon(Icons.close),
+                              ),
                             ),
                           ),
                         ),

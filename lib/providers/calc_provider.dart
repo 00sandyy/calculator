@@ -38,13 +38,22 @@ class CalcProvider extends ChangeNotifier {
         .where((e) => e.isNotEmpty && !e.contains('.'))
         .toList()
         .first;
+    print(splitted);
+    print(num1);
+    print(num2);
+    print(op);
 
     switch (op) {
       case '+':
         result = num1 + num2;
         break;
       case '-':
-        result = num1 - num2;
+        if (num1 == num2) {
+          result = 0.0;
+        } else {
+          result = num1 - num2;
+        }
+
         break;
       case '*':
         result = num1 * num2;

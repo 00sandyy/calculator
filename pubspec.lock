@@ -126,16 +126,20 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.0"
+  flutter_slidable:
+    dependency: "direct main"
+    description:
+      name: flutter_slidable
+      sha256: "6c68e1fad129b4b807b2218ef4cf7f7f6f61c5ec8861c990dc2278d9d03cb09f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   flutter_staggered_animations:
     dependency: "direct main"
     description:
       name: flutter_staggered_animations
-<<<<<<< HEAD
-      url: "https://pub.dartlang.org"
-=======
       sha256: "81d3c816c9bb0dca9e8a5d5454610e21ffb068aedb2bde49d2f8d04f75538351"
       url: "https://pub.dev"
->>>>>>> 94b8b124bf03c53e33cecbcc132ef967ce959dce
     source: hosted
     version: "1.1.1"
   flutter_statusbarcolor_ns:
@@ -320,10 +324,10 @@ packages:
     dependency: transitive
     description:
       name: xml
-      sha256: ac0e3f4bf00ba2708c33fbabbbe766300e509f8c82dbd4ab6525039813f7e2fb
+      sha256: "979ee37d622dec6365e2efa4d906c37470995871fe9ae080d967e192d88286b5"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.0"
+    version: "6.2.2"
   yaml:
     dependency: transitive
     description:

@@ -30,7 +30,7 @@ class CalcInput extends StatelessWidget {
             ),
           ),
         ),
-        if (calcProvider.result != null && calcProvider.result != 0.0)
+        if (calcProvider.result != null)
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: Text(
