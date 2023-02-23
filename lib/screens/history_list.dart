@@ -31,7 +31,7 @@ class _HistoryListState extends State<HistoryList> {
               ),
             ),
           ],
-          isRepeatingAnimation: false,
+          isRepeatingAnimation: true,
           repeatForever: false,
           displayFullTextOnTap: true,
           stopPauseOnTap: false,
